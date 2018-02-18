@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Rock Paper Scissors Part 2
+  </title>
+</head>
+
+<body>
+
+  <div id="game">
+      <h2>You guessed <span id="guess"><strong> </strong></span></h2>
+      <h2>Computer Guessed <span id="computer-guess"><strong></strong></span></h2>
+      <h2>Total Wins <span id="wins"><strong>0</strong></span></h2>
+      <h2>Total Losses <span id="losses"><strong>0</strong></span></h2>
+      <h2>Total Draws <span id="draws"><strong>0</strong></span></h2>
+
+  </div>
+
+  <script type="text/javascript">
+
+      //Tim&Doug Psuedo code
+      //JS primitive types - strings, Booleans, and integers
+      // On game start - wins, losses and draws =0
+      var win =0;
+      var loss =0;
+      var draw =0;
+
+      var gameOptions = ["r", "p", "s"];
+
+      
+      // Capture user entry
+      document.onkeyup = function(event) {
+        console.log(event); 
+        var userGuess = event.key;
+        console.log(event.key);
+      // Computer needs to guess either r,p, s at random
+        var computerGuess = gameOptions[Math.floor(Math.random() * gameOptions.length)];
+
+      // See if user entry is either r,p, or s
+        if(gameOptions.includes(userGuess)){
+          console.log("userGuess is valid");
+      // If user enters one of the correct keys, compare it to what the computer entered
+          if(userGuess===computerGuess){
+            draw++
+          }
+          else{
+            if(userGuess==="r"){
+              if(computerGuess==="p"){
+                loss++
+              }
+              else{
+                win++
+              }
+            }
+             else if(userGuess==="p"){
+              if(computerGuess==="s"){
+                loss++
+              }
+              else{
+                win++
+              }
+            }
+             else if(userGuess==="s"){
+              if(computerGuess==="r"){
+                loss++
+              }
+              else{
+                win++
+              }
+             }
+          }
+      // Display the user's guess and the computer's guess
+          document.getElementById("wins").textContent=win;
+          document.getElementById("losses").textContent=loss;
+          document.getElementById("draws").textContent=draw;
+          document.getElementById("guess").textContent=userGuess;
+          document.getElementById("computer-guess").textContent=computerGuess;
+      // Based on the user and computer, determine if user wins, loses, or ties
+      // Update the wins, losses, and draws in incrments of 1
+        }
+      // Provide instructions as to user options if they don't enter the correct keys
+        else{
+          alert("Choose r, p, or s");
+        }
+
+
+
+      // Alerts the key the user pressed (userGuess).
+     // alert("User guess: " + userGuess);
+
+      // Alerts the Computer's guess.
+     // alert("Computer guess: " + computerGuess);
+
+      };
+  </script>
+
+</body>
+
+</html>
